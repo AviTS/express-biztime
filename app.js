@@ -11,6 +11,9 @@ app.use(express.json());
 const compRoutes = require('./routes/companies');
 app.use('/companies', compRoutes);
 
+const invoiceRoutes = require('./routes/invoices');
+app.use('/invoices', invoiceRoutes);
+
 /** 404 handler */
 
 app.use(function(req, res, next) {
@@ -30,4 +33,4 @@ app.use((err, req, res, next) => {
 });
 
 
-module.exports = app, router;
+module.exports = app;
