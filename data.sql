@@ -19,6 +19,17 @@ CREATE TABLE invoices (
     CONSTRAINT invoices_amt_check CHECK ((amt > (0)::double precision))
 );
 
+CREATE TABLE industries (
+  code text NOT NULL PRIMARY KEY,
+  industry text
+);
+
+CREATE TABLE companies_industries (
+  code text NOT NULL REFERENCES companies,
+  industry_code text NOT NULL REFERENCES industries,
+  PRIMARY KEY(code, industry_code)
+);
+
 INSERT INTO companies
   VALUES ('apple', 'Apple Computer', 'Maker of OSX.'),
          ('ibm', 'IBM', 'Big blue.');
